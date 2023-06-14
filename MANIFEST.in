@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include gaxisdynamic *.css
+recursive-include gaxisdynamic *.csv
+recursive-include gaxisdynamic *.html
+recursive-include gaxisdynamic *.ico
+recursive-include gaxisdynamic *.js
+recursive-include gaxisdynamic *.json
+recursive-include gaxisdynamic *.md
+recursive-include gaxisdynamic *.png
+recursive-include gaxisdynamic *.py
+recursive-include gaxisdynamic *.svg
+recursive-include gaxisdynamic *.txt
+recursive-exclude gaxisdynamic *.pyc
