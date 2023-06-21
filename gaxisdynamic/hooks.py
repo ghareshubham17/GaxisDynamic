@@ -7,6 +7,28 @@ app_description = "sss"
 app_email = "aa"
 app_license = "ss"
 
+
+doctype_js = {
+    "Customer": "my_customization/client_scripts/customer.js",
+    "Company":"my_customization/client_scripts/company.js",
+    "Address":"my_customization/client_scripts/address.js",
+    "Supplier":"my_customization/client_scripts/supplier.js",
+    "Supplier Quotation":"my_customization/client_scripts/supplier_quotation.js",
+    "User":"my_customization/client_scripts/user.js",
+    "Quotation":"my_customization/client_scripts/quotation.js",
+    "Sales Order":"my_customization/client_scripts/sales_order.js",
+    "Batch":"my_customization/client_scripts/batch.js",
+    "Item":"my_customization/client_scripts/item.js",
+    "Stock Entry":"my_customization/client_scripts/stock_entry.js",
+    "Stock Reconciliation":"my_customization/client_scripts/stock_reconciliation.js",
+    "Sales Invoice":"my_customization/client_scripts/sales_invoice.js",
+    "Warehouse":"my_customization/client_scripts/warehouse.js"
+}
+
+after_install = "gaxisdynamic.install.after_install"
+
+
+
 # Includes in <head>
 # ------------------
 
