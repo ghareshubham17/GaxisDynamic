@@ -3,6 +3,14 @@ frappe.ui.form.on('Sales Order', {
 	  // GAxis Dynamic Logic
 	  gaxis_dynamic(frm);
 	},
+	shipping_rule:function(frm){
+		console.log("ss")
+        frm.set_df_property("sec_tax_breakup","hidden",1)
+	},
+	before_save:function(frm){
+		console.log("before")
+	   frm.set_df_property("sec_tax_breakup","hidden",0)
+	},
 });
 
 var gaxis_dynamic = function(frm, bool=true) {

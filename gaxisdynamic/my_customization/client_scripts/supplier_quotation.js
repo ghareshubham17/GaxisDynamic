@@ -3,6 +3,14 @@ frappe.ui.form.on('Supplier Quotation', {
 	  // GAxis Dynamic Logic
 		gaxis_dynamic(frm);
 	},
+	before_save: function(frm){
+		frm.set_df_property("tax_breakup", "hidden", false);
+	},
+
+	shipping_rule: function (frm) {
+		frm.set_df_property("tax_breakup", "hidden", true);
+		
+	}
 });
 
 

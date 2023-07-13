@@ -3,6 +3,9 @@ frappe.ui.form.on('Item', {
 	  // GAxis Dynamic Logic
 	  gaxis_dynamic(frm);
 	},
+	after_save: function (frm) {		
+		frappe.ui.toolbar.clear_cache()			
+	},
 });
 
 var gaxis_dynamic = function(frm, bool=true) {

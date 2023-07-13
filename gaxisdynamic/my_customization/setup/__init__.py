@@ -1,4 +1,38 @@
 import frappe
+from gaxisdynamic.my_customization.constants.custom_fields import (
+    CUSTOM_FIELDS,
+)
+from frappe.custom.doctype.custom_field.custom_field import (
+    create_custom_fields as _create_custom_fields,
+)
+
+def after_install():
+    create_custom_fields()
+    removing_fields()
+
+
+
+
+def create_custom_fields():
+    # Validation ignored for faster creation
+    # Will not fail if a core field with same name already exists (!)
+    # Will update a custom field if it already exists
+    _create_custom_fields(get_all_custom_fields(), ignore_validate=True)
+
+
+def get_all_custom_fields():
+    result = {}
+
+    for custom_fields in (
+        CUSTOM_FIELDS,
+    ):
+        for doctypes, fields in custom_fields.items():
+            if isinstance(fields, dict):
+                fields = [fields]
+
+            result.setdefault(doctypes, []).extend(fields)
+
+    return result
 
 def removing_fields():
     # Sales Order Item

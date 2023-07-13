@@ -1,8 +1,37 @@
 frappe.ui.form.on('Sales Invoice', {
 	refresh: function(frm) {
+		if(frm.doc.customer == undefined){
+			frm.set_value("disable_rounded_total", 1);
+			frm.set_value("update_stock", 1);
+		}
+		if(frm.fields_dict['is_return'].value == 1){
+			frm.set_df_property('naming_series', 'options', ["ACC-SINV-RET-.YYYY.-"]);
+
+		}else{
+			frm.set_df_property('naming_series', 'options', ["ACC-SINV-.YYYY.-"]);
+
+		}
 	    // GAxis Dynamic Logic
 		gaxis_dynamic(frm);
 	},
+	before_save: function(frm){
+		frm.set_df_property("sec_tax_breakup", "hidden", 0);
+	},
+	shipping_rule: function(frm){
+		frm.set_df_property("sec_tax_breakup", "hidden", 1);
+		
+	},
+
+	is_return: function(frm){
+		console.log("IS RETurn");
+		if(frm.doc.is_return){
+			frm.set_df_property('naming_series', 'options', ["ACC-SINV-RET-.YYYY.-"]);
+			frm.set_value('naming_series', "ACC-SINV-RET-.YYYY.-");
+		}else{
+			frm.set_df_property('naming_series', 'options', ["ACC-SINV-.YYYY.-"]);
+			frm.set_value('naming_series', "ACC-SINV-.YYYY.-");
+		}
+	}
 });
 
 var gaxis_dynamic = function(frm, bool=true) {

@@ -3,6 +3,85 @@ frappe.ui.form.on('Company', {
 	  // GAxis Dynamic Logic
 	  gaxis_dynamic(frm);
 	},
+	validate: function (frm) {
+		// Company
+		if((frm.doc.company_name !== undefined) && (frm.doc.company_name !== null)) {
+			if (frm.doc.company_name.length < 5) {
+				frappe.throw(__('Company should be greater than 5 characters.'));
+			}
+		}
+
+		// Abbreviation
+		if((frm.doc.abbr !== undefined) && (frm.doc.abbr !== null)) {
+			if (frm.doc.abbr.length < 2) {
+				frappe.throw(__('Abbreviation should be greater than 2 characters.'));
+			}
+
+			if(frm.doc.abbr.length > 5) {
+				frappe.throw(__('Abbreviation should be less than or equal to 5 characters.'));
+			}
+		}
+
+		// PAN
+		if((frm.doc.pan !== undefined) && (frm.doc.pan !== null)) {
+			if(frm.doc.pan !== '') {
+				if (frm.doc.pan.length != 10) {
+					frappe.throw(__('PAN should be 10 characters.'));
+				} else {
+					var regex = /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+
+					if(regex.test(frm.doc.pan.toUpperCase()) == false){
+						frappe.throw(__('Invalid PAN.'));
+					}
+		
+					frm.set_value('pan', frm.doc.pan.toUpperCase());
+				}
+			}
+		}
+
+		// GSTIN / UIN
+		if ((frm.doc.gstin !== undefined) && (frm.doc.gstin !== null)) {
+			if(frm.doc.gstin !== '') {
+				if (frm.doc.gstin.length != 15) {
+					frappe.throw(__('GSTIN / UIN should be 15 characters.'));
+				} else {
+					var regex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+	
+					if (!regex.test(frm.doc.gstin.toUpperCase())) {
+						frappe.throw(__('Invlaid GSTIN / UIN.'));
+					}
+					
+					frm.set_value('gstin', frm.doc.gstin.toUpperCase());
+				}
+			}
+		}
+
+		// Company Description
+		if((frm.doc.company_description !== undefined) && (frm.doc.company_description !== null)) {
+			if(frm.doc.company_description !== '') {
+				if(frm.doc.company_description.length < 10) {
+					frappe.throw(__('Company Description should be greater than 10 characters.'));
+				}
+			}
+		}
+
+		// CIN
+		if ((frm.doc.cin !== undefined) && (frm.doc.cin !== null)) {
+			if(frm.doc.cin !== '') {
+				if(frm.doc.cin.length !== 21) {
+					frappe.throw(__('The lenght of CIN should be 21 characters.'));
+				} else {
+					var regex = /[A-Z]{1}[0-9]{5}[A-Z]{2}[0-9]{4}[A-Z]{3}[0-9]{6}$/;
+
+					if (!regex.test(frm.doc.cin.toUpperCase())) {
+						frappe.throw(__('Invlaid CIN.'));
+					}
+
+					frm.set_value('cin', frm.doc.cin.toUpperCase());
+				}
+			}
+		}
+	}
 });
 
 var gaxis_dynamic = function(frm, bool=true) {

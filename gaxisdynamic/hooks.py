@@ -28,6 +28,14 @@ doctype_js = {
 after_install = "gaxisdynamic.install.after_install"
 
 
+doc_events = {
+    "Quotation": {
+        "autoname": [
+            "gaxisdynamic.my_customization.constants.quotation.autoname",
+        ],
+    },
+}
+
 
 # Includes in <head>
 # ------------------
