@@ -26,6 +26,7 @@ doctype_js = {
 }
 
 after_install = "gaxisdynamic.install.after_install"
+after_migrate="gaxisdynamic.install.after_install"
 
 
 doc_events = {

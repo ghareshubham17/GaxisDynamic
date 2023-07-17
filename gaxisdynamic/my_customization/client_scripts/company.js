@@ -2,6 +2,8 @@ frappe.ui.form.on('Company', {
 	refresh: function(frm) {
 	  // GAxis Dynamic Logic
 	  gaxis_dynamic(frm);
+	  frm.dashboard.hide();
+	  frm.set_value('default_letter_head', 'Aditech Plastics');
 	},
 	validate: function (frm) {
 		// Company
@@ -137,6 +139,22 @@ var gaxis_dynamic = function(frm, bool=true) {
 		frm.set_df_property("stock_received_but_not_billed", "read_only", bool);
 		frm.set_df_property("default_provisional_account", "read_only", bool);
 		frm.set_df_property("expenses_included_in_valuation", "read_only", bool);
+		frm.set_df_property("default_settings", "read_only", bool);
+		frm.set_df_property("tax_id", "read_only", bool);
+		frm.set_df_property("domain", "read_only", bool);
+		frm.set_df_property("date_of_establishment", "read_only", bool);
+		frm.set_df_property("parent_company", "read_only", bool);
+		frm.set_df_property("default_holiday_list", "read_only", bool);
+		frm.set_df_property("date_of_incorporation", "read_only", bool);
+		frm.set_df_property("date_of_incorporation", "read_only", bool);
+		frm.set_df_property("fax", "read_only", bool);
+		frm.set_df_property("phone_no", "read_only", bool);
+		frm.set_df_property("website", "read_only", bool);
+		frm.set_df_property("email", "read_only", bool);
+		frm.set_df_property("company_description", "read_only", bool);
+		frm.set_df_property("sales_settings", "read_only", bool);
+		frm.set_df_property("registration_details", "read_only", bool);
+		
 
 		// Set Hidden property
 		frm.set_df_property("create_chart_of_accounts_based_on", "hidden", bool);
@@ -189,5 +207,19 @@ var gaxis_dynamic = function(frm, bool=true) {
 		frm.set_df_property("stock_received_but_not_billed", "hidden", bool);
 		frm.set_df_property("default_provisional_account", "hidden", bool);
 		frm.set_df_property("expenses_included_in_valuation", "hidden", bool);
+		frm.set_df_property("default_settings", "hidden", bool);
+		frm.set_df_property("tax_id", "hidden", bool);
+		frm.set_df_property("domain", "hidden", bool);
+		frm.set_df_property("date_of_establishment", "hidden", bool);
+		frm.set_df_property("parent_company", "hidden", bool);
+		frm.set_df_property("default_holiday_list", "hidden", bool);
+		frm.set_df_property("date_of_incorporation", "hidden", bool);
+		frm.set_df_property("fax", "hidden", bool);
+		frm.set_df_property("phone_no", "hidden", bool);
+		frm.set_df_property("website", "hidden", bool);
+		frm.set_df_property("email", "hidden", bool);
+		frm.set_df_property("company_description", "hidden", bool);
+		frm.set_df_property("sales_settings", "hidden", bool);
+		frm.set_df_property("registration_details", "hidden", bool);
 	}
 }
