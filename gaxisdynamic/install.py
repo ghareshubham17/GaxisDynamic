@@ -22,15 +22,22 @@ def after_install():
     click.secho("Thank you for installing GaxisDynamic!", fg="green")
 
 
-def delete_workspace():
-    frappe.delete_doc("Workspace", "support", force=True)
-    frappe.delete_doc("Workspace", "Loans", force=True)
-    frappe.delete_doc("Workspace", "crm",force=True)
-    frappe.delete_doc("Workspace", "Projects", force=True)
-    frappe.delete_doc("Workspace", "Assets", force=True)
-    frappe.delete_doc("Workspace", "GST India", force=True)
-    frappe.delete_doc("Workspace", "Accounting", force=True)
-    frappe.delete_doc("Workspace", "Buying", force=True)
-    frappe.delete_doc("Workspace", "Stock", force=True)
-    frappe.delete_doc("Workspace", "Selling", force=True)
+# def delete_workspace():
+#     frappe.delete_doc("Workspace", "support", force=True)
+#     frappe.delete_doc("Workspace", "Loans", force=True)
+#     frappe.delete_doc("Workspace", "crm",force=True)
+#     frappe.delete_doc("Workspace", "Projects", force=True)
+#     frappe.delete_doc("Workspace", "Assets", force=True)
+#     frappe.delete_doc("Workspace", "GST India", force=True)
+#     # frappe.delete_doc("Workspace", "Accounting", force=True)
+#     # frappe.delete_doc("Workspace", "Buying", force=True)
+#     # frappe.delete_doc("Workspace", "Stock", force=True)
+#     # frappe.delete_doc("Workspace", "Selling", force=True)
     
+def delete_workspace():
+    Workspaces=["Manufacturing","crm","Quality","Payroll","Projects","Loans","support","Assets","GST India"]
+    for ws in Workspaces:
+        frappe.delete_doc_if_exists("Workspace", ws)
+    
+    for ws in Workspaces:
+        frappe.db.set_value("Workspace", ws, "public", 0)    
