@@ -22,7 +22,8 @@ doctype_js = {
     "Stock Entry":"my_customization/client_scripts/stock_entry.js",
     "Stock Reconciliation":"my_customization/client_scripts/stock_reconciliation.js",
     "Sales Invoice":"my_customization/client_scripts/sales_invoice.js",
-    "Warehouse":"my_customization/client_scripts/warehouse.js"
+    "Warehouse":"my_customization/client_scripts/warehouse.js",
+    "Material Request":"my_customization/client_scripts/material_request.js"
 }
 
 after_install = "gaxisdynamic.install.after_install"
@@ -229,4 +230,7 @@ doc_events = {
 
 # auth_hooks = [
 #	"gaxisdynamic.auth.validate"
+# ]
+# fixtures=[
+#     "Workspace"
 # ]
